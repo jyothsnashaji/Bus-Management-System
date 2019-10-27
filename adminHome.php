@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(!isset($_SESSION['user']))
+    header('Location:admin.php')
+?>
+
 <html>
     <head>
 
@@ -13,9 +19,9 @@
 
 <div class="sidenav">
 
-  <a href="#search">Search</a>
+  <a href="adminHome.php">Search</a>
   <a href="#services">Bus Services</a>
-  <a href="#profile">Profile</a>
-  <a href="logout.php">Logout</a>
+  <a href="adminprofile.php">Profile</a>
+  <a href="logout_admin.php">Logout</a>
 </div>
 </html>

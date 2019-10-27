@@ -63,3 +63,12 @@ height: 10%;
 .sidenav a:hover {
   color: #f1f1f1;
 }
+
+.contents {
+    width: 80%;
+    margin-left: 20%;
+    padding-top: 20px;
+}
+.close {
+margin-right: 0;
+}
