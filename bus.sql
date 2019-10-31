@@ -2,9 +2,9 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 26, 2019 at 08:25 PM
--- Server version: 10.1.36-MariaDB
+-- Host: localhost
+-- Generation Time: Oct 31, 2019 at 10:39 AM
+-- Server version: 8.0.13
 -- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -71,6 +71,23 @@ CREATE TABLE `driver` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `passenger`
+--
+
+CREATE TABLE `passenger` (
+  `passenger_id` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `student/staff` varchar(255) NOT NULL,
+  `stop` varchar(255) NOT NULL,
+  `bus_id` int(255) NOT NULL,
+  `dept` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `stops`
 --
 
@@ -102,6 +119,12 @@ ALTER TABLE `bus`
 --
 ALTER TABLE `driver`
   ADD PRIMARY KEY (`driver_id`);
+
+--
+-- Indexes for table `passenger`
+--
+ALTER TABLE `passenger`
+  ADD PRIMARY KEY (`passenger_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
