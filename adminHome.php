@@ -20,7 +20,7 @@ if(!isset($_SESSION['user']))
 <div class="sidenav">
 
   <a href="adminHome.php">Search</a>
-  <a href="#services">Bus Services</a>
+  <a href="bus.php">Bus Services</a>
   <a href="adminprofile.php">Profile</a>
   <a href="logout_admin.php">Logout</a>
 </div>

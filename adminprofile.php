@@ -21,7 +21,7 @@ if(!isset($_SESSION['user']))
     <div class="sidenav">
 
         <a href="adminHome.php">Search</a>
-        <a href="#services">Bus Services</a>
+        <a href="bus.php">Bus Services</a>
         <a href="adminprofile.php">Profile</a>
         <a href="logout_admin.php">Logout</a>
     </div>
@@ -80,9 +80,7 @@ if(!isset($_SESSION['user']))
             </form></div>
 
         
-     <div class="alert alert-warning alert-dismissible fade show" >
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
   
 </div>   
         

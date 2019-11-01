@@ -1,7 +1,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password],input[type=number],input[type=time] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -11,7 +11,7 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
-button {
+button, input[type=submit], .button {
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -71,4 +71,4 @@ height: 10%;
 }
 .close {
 margin-right: 0;
-}
+}zz
