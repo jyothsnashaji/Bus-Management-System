@@ -1,21 +1,31 @@
 body {font-family: Arial, Helvetica, sans-serif;}
-
+.heading{
+  text-align:center;
+  font-size: 150%;
+  font-weight: bold;
+}
+.heading:hover{
+  cursor: pointer;
+  color: #4CAF50;
+}
 /* Full-width input fields */
-input[type=text], input[type=password],input[type=number],input[type=time] {
+input[type=text], input[type=password],input[type=number],input[type=time],select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  background-coloR: white;
 }
+
+
 
 /* Set a style for all buttons */
 button, input[type=submit], .button {
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -71,4 +81,12 @@ height: 10%;
 }
 .close {
 margin-right: 0;
-}zz
+}
+.collapserow:hover
+{
+    cursor: pointer;
+}
+.collapse
+{
+    background-color: none;
+}
