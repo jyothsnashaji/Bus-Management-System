@@ -36,31 +36,27 @@ if(!isset($_SESSION['user']))
     {
         if ($_SESSION['status']=='updated')
         {
-            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            echo '<div  id="alert" class="alert alert-success alert-dismissible fade show" role="alert">
  Password Updated Successfully!
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
- 
+ <span onclick="document.getElementById(\'alert\').style.display=\'none\';" class="close">&times;</span>
 </div>';}
         else  if ($_SESSION['status']=='incorrect')
         {
           echo '
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
+<div id="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
  Password Incorrect
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+ <span onclick="document.getElementById(\'alert\').style.display=\'none\';" class="close">&times;</span>
+
 </div>';}
         else  if ($_SESSION['status']=='mismatch')
         { echo '         
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<div id="alert" class="alert alert-warning alert-dismissible fade show" role="alert">
   Passwords do not match
-   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <span onclick="document.getElementById(\'alert\').style.display=\'none\';" class="close">&times;</span>
+
 </div>';
         }
+        unset($_SESSION['status']);
         
     }
     

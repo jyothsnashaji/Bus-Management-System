@@ -30,7 +30,8 @@ if(!isset($_SESSION['user']))
 
 <form action='adminHome.php' method='post'>
 <div class='row justify-content-center'>
-    <div class='col'>
+  
+    <div class='col-sm-3'>
         <label for='for'><b>Search For</b></label>
         <select name='for'>
             <option  value='student'>Student</option>
@@ -38,12 +39,12 @@ if(!isset($_SESSION['user']))
             <option value='driver'>Driver</option>
         </select>
     </div>
-    <div class='col'>
+    <div class='col-sm-3'>
         <label name='id'><b>ID</b></label>
         <input type='text' name='id'>
     </div>
-    <div class='col'>
-        <input type=submit>
+    <div class='col-sm-3' style='padding-top:40px;'>
+        <input type=submit value='Search'>
     </div>
 </div>
 

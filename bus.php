@@ -115,7 +115,13 @@ while($buses=mysqli_fetch_array($res))
 
 <div class="modal" id="busid_modal">
   <div class="modal-dialog">
+
     <div class="modal-content">
+    <div class="modal-header">
+ 
+          <span class="close" onclick="document.getElementById('busid_modal').style.display='none';" >&times;</span>
+
+      </div>
       <div class="modal-body">
       <form id='getbusid' method='post'>
         <input type=number placeholder='Enter the Bus id' name='bus_id' required>

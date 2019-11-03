@@ -31,23 +31,23 @@ include_once('dbConfig.php');
      echo "<form action='insertEditBus.php?bus_id=";
     echo $_POST['bus_id'];
     echo "' method='post' ><div id='stopsInput'>";
- 
+   echo "
+  <div class='row justify-content-center'>
+          <div class='col-sm-3'> 
+              <label for='stop'><b>Stop </b></label>
+          </div>
+          <div class='col-sm-3'> 
+              <label for='time'><b>Morning (To College)</b></label>
+          </div>
+          <div class='col-sm-3'> 
+              <label for='time'><b>Evening (From College)</b></label>
+          </div>
+  </div>";
   $sql="SELECT * FROM stops WHERE bus_id=".$_POST['bus_id']." ORDER BY to_time ASC ";
   $res_=mysqli_query($db,$sql);
   while($stops=mysqli_fetch_array($res_))
   {
-    echo "
-        <div class='row justify-content-center'>
-                <div class='col-sm-3'> 
-                    <label for='stop'><b>Stop </b></label>
-                </div>
-                <div class='col-sm-3'> 
-                    <label for='time'><b>Morning (To College)</b></label>
-                </div>
-                <div class='col-sm-3'> 
-                    <label for='time'><b>Evening (From College)</b></label>
-                </div>
-        </div>
+  echo "
         <div class='row justify-content-center'>
                 <div class='col-sm-3'> 
                     <input type='text' name='stop[]'  required value='";
@@ -66,6 +66,14 @@ include_once('dbConfig.php');
                     echo $fro;
                     echo ">
                 </div>
+                <div class=''col-sm-2'>
+                <span><a style='text-decoration:none;' href='removeStop.php?bus_id=";
+                echo $_POST['bus_id'];
+                echo "&stop=";
+                echo $stops['stop'];
+                echo "'>Remove Stop</a></span>
+                </div>
+
         </div>";
 
 

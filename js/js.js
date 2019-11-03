@@ -9,17 +9,7 @@ function getBusid(purpose)
 function addStop()
 {
     var ele=document.getElementById('stopsInput');
-    var html=`<div class='row justify-content-center'>
-    <div class='col-sm-3'> 
-        <label for='stop'><b>Stop </b></label>
-    </div>
-    <div class='col-sm-3'> 
-        <label for='time'><b>Morning (To College)</b></label>
-    </div>
-    <div class='col-sm-3'> 
-        <label for='time'><b>Evening (From College)</b></label>
-    </div>
-</div>
+    var html=`
 <div class='row justify-content-center'>
     <div class='col-sm-3'> 
         <input type='text' name='stop[]' required>
@@ -30,9 +20,12 @@ function addStop()
     <div class='col-sm-3'> 
         <input type='time' name='fromtime[]' required>
     </div>
+   
 </div> `;
     ele.innerHTML+=html;
 }
+
+
 
 function toggle_collapse(op)
           {
