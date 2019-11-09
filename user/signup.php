@@ -32,7 +32,7 @@ include_once('dbConfig.php');
                         <input type="password" name='reeneterpassword' placeholder="Confirm Password "required>
 
                         <div class="select-list">
-                            <select required name="User type" id="user_type" onchange='loadinput();' required>
+                            <select required name="category" id="user_type" onchange='loadinput();' required>
                                 <option selected value="">Choose the User Type</option>
                                 <option value="student">Student</option>
                                 <option value="staff">Staff</option>
@@ -42,13 +42,13 @@ include_once('dbConfig.php');
                     </div>
 
                     <div class="form-group-2" id='passenger' style='display:none;'>
-                        <input type="text" name="idnum" id="idno" placeholder="Enter Id Number" required />
+                        <input type="text" name="id" placeholder="Enter Id Number"  />
 
-                        <input type="text" name="Dept" id="Dept" placeholder="Department" />
+                        <input type="text" name="dept" placeholder="Department" />
 
 
                         <div class="select-list">
-                            <select name="Drop-Point" id="Drop_Point" required>
+                            <select name="stop" >
                                 <option selected value="">Choose Drop-Off Point</option>
                                 <?php
                                 $sql="SELECT DISTINCT stop FROM stops ";
@@ -70,11 +70,22 @@ include_once('dbConfig.php');
                     </div>
 
                     <div class="form-group-2" id='driver' style='display:none;'>
+                        <select name="bus_id">
 
+                            <?php
+                            $sql="SELECT bus_id FROM bus ";
+                            $res=mysqli_query($db,$sql);
+                            while ($rr=mysqli_fetch_array($res))
+                            {
+                                echo "<option value='";
+                                echo $rr['bus_id'];
+                                echo "'>";
+                                echo $rr['bus_id'];
+                                echo "</option>";
+                            }
+                            ?>
 
-
-
-                        <input type="number" name="bus_id" placeholder="Bus number"  />
+                        </select>
 
                         <input type="number" name="age" id="Age" placeholder="Age" /> 
 
@@ -85,8 +96,9 @@ include_once('dbConfig.php');
 
 
                     <div class="form-submit">
-                        <input type="submit" name="submit" id="submit" class="submit" value="Create User" />
+                        <input type="submit" name="submit" id="submit" class="submit" value="Create User">
                     </div>
+
                 </form>
             </div>
 

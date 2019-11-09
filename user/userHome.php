@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
-<body>
+    <head>
+        <title>HOME</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </head>
+    <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Bus Booking</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      
-      <li><a href="#">Routes</a></li>
-      <li><a href="#">Schedule</a></li>
-    </ul>
-  </div>
-</nav>
-  
+        <header class="page-header" id="header">
+            <div class="container-fluid" >
+<br>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <img  src="images/logo.jpg">
+                    </div>
+                    <div class="col-sm-4"  >
+                        <div class="row"> <h3 style="float:right;">NIT-C BUS PORTAL</h3></div>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">SCHEDULE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">LOGOUT</a>
+                    </li>
+
+                </ul>
+            </nav>
+            <br><br><br>
+
+        </header>
 
 
-</body>
+
+    </body>
 </html>
