@@ -1,8 +1,12 @@
-<?php 
-session_start();
-if(!isset($_SESSION['user']))
-    header('Location:index.php')
-?>
+
+<?php
+// remove all session variables
+session_unset();
+
+// destroy the session
+if(isset($_SESSION))
+{session_destroy();}
+ ?>
 
 <!DOCTYPE html>
 <html>
@@ -16,7 +20,7 @@ if(!isset($_SESSION['user']))
     </head>
     <body>
 
-        <div class="modal-dialog text-center"> 
+        <div class="modal-dialog text-center">
             <div class="col-sm-8 main-section">
                 <div class="modal-content">
 
@@ -32,7 +36,7 @@ if(!isset($_SESSION['user']))
                             <input type="password" class="form-control" name="password" placeholder="Enter Password">
                         </div>
                         <div class="form-group">
-                        
+
                             <select required name="category" required>
                                 <option selected value="">Choose User</option>
                                 <option value="student">Student</option>
@@ -54,11 +58,3 @@ if(!isset($_SESSION['user']))
 
     </body>
 </html>
-
-
-
-
-
-
-
-
