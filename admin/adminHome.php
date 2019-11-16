@@ -2,6 +2,7 @@
 session_start();
 if(!isset($_SESSION['user']))
     header('Location:admin.php')
+include_once('dbConfig.php');
 ?>
 
 <html>
@@ -49,6 +50,49 @@ if(!isset($_SESSION['user']))
 </div>
 
 </form>
+
+<div class='container'>
+            <?php 
+            if (!empty($_POST))
+            { 
+                $searchfor=$_POST['for'];
+                $id=$_POST['id'];
+                if ($searchfor='driver')
+                    {
+                        $sql="SELECT * FROM driver WHERE driver_id=".$id." ";
+                        $res=mysqli_query($db,$sql);
+                        if ($res)
+                        {
+                            $rr=mysqli_fetch_array($res);
+                            echo $rr['driver_id'];
+                            echo "<br>";
+                            echo $rr['name'];
+                            echo "<br>";
+                            echo $rr['licno'];
+                            echo "<br>";
+                            echo $rr['age'];
+                            echo "<br>";
+                        }
+                        else
+                            echo "Does not exist";
+                    }
+                else
+                    {
+                        $sql="SELECT * FROM passenger WHERE passenger_id=".$id." ";
+                        $res=mysqli_query($db,$sql);
+                        if ($res)
+                        {
+                            $rr=mysqli_fetch_array($res);
+
+                        }
+                        else
+                            echo "Does not exist";
+                    }
+                
+          
+            }
+            ?>
+            </div>
 </div>
 
 </div>

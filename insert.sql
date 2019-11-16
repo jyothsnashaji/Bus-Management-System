@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 31, 2019 at 10:39 AM
--- Server version: 8.0.13
--- PHP Version: 7.2.11
+-- Generation Time: Nov 15, 2019 at 04:57 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -53,6 +53,14 @@ CREATE TABLE `bus` (
   `driver_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `bus`
+--
+
+INSERT INTO `bus` (`bus_id`, `driver_id`) VALUES
+(101, 0),
+(102, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -68,6 +76,14 @@ CREATE TABLE `driver` (
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `driver`
+--
+
+INSERT INTO `driver` (`driver_id`, `name`, `licno`, `age`, `password`, `email`) VALUES
+(1, 'AAA', 'Jhkjhjg', 40, '1234', 'jyothsnashaji99@gmail.com'),
+(2, 'BBB', 'klnk', 50, '1234', 'jyothsnashaji99@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -77,13 +93,21 @@ CREATE TABLE `driver` (
 CREATE TABLE `passenger` (
   `passenger_id` int(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `student/staff` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL,
   `stop` varchar(255) NOT NULL,
   `bus_id` int(255) NOT NULL,
   `dept` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `passenger`
+--
+
+INSERT INTO `passenger` (`passenger_id`, `name`, `category`, `stop`, `bus_id`, `dept`, `password`, `email`) VALUES
+(0, 'jyothsna', 'student', 'bb', 0, 'cse', '1234', 'jyothsnashaji99@gmail.com'),
+(2147483647, 'farsana', 'staff', 'cccc', 0, 'cse', '1234', 'jyothsnashaji99@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -97,6 +121,18 @@ CREATE TABLE `stops` (
   `to_time` time(6) NOT NULL,
   `from_time` time(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stops`
+--
+
+INSERT INTO `stops` (`bus_id`, `stop`, `to_time`, `from_time`) VALUES
+(101, 'aa', '10:10:00.000000', '06:10:00.000000'),
+(101, 'bb', '10:40:00.000000', '06:40:00.000000'),
+(101, 'cc', '11:10:00.000000', '07:10:00.000000'),
+(102, 'aaaa', '09:00:00.000000', '15:10:00.000000'),
+(102, 'cccc', '09:20:00.000000', '15:30:00.000000'),
+(102, 'dddd', '09:40:00.000000', '15:40:00.000000');
 
 --
 -- Indexes for dumped tables
@@ -137,16 +173,10 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `bus`
---
-ALTER TABLE `bus`
-  MODIFY `bus_id` int(255) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `driver`
 --
 ALTER TABLE `driver`
-  MODIFY `driver_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `driver_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
