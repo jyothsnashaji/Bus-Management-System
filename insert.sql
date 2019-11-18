@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 15, 2019 at 04:57 PM
+-- Generation Time: Nov 18, 2019 at 05:23 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 5.6.38
 
@@ -106,7 +106,7 @@ CREATE TABLE `passenger` (
 --
 
 INSERT INTO `passenger` (`passenger_id`, `name`, `category`, `stop`, `bus_id`, `dept`, `password`, `email`) VALUES
-(0, 'jyothsna', 'student', 'bb', 0, 'cse', '1234', 'jyothsnashaji99@gmail.com'),
+(1, 'jyothsna', 'student', 'bb', 0, 'cse', '1234', 'jyothsnashaji99@gmail.com'),
 (2147483647, 'farsana', 'staff', 'cccc', 0, 'cse', '1234', 'jyothsnashaji99@gmail.com');
 
 -- --------------------------------------------------------

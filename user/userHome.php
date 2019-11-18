@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(!isset($_SESSION['user']))
+    header('Location:index.php');
+include_once('dbConfig.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,9 +47,36 @@
                 </ul>
             </nav>
             <br><br><br>
+            </header>
+            <div class='container'>
+            <?php
+            $rr='';
+            if ($_SESSION['category']=='driver')
+            {
+                $sql="SELECT bus_id FROM bus WHERE driver_id=".$_SESSION['user']." ";
+                $res=mysqli_query($db,$sql);
+                $rr=mysqli_fetch_array($res);
 
-        </header>
+            }
+            else
+            {
+                $sql="SELECT bus_id FROM passenger WHERE passenger_id=".$_SESSION['user']." ";
+                $res=mysqli_query($db,$sql);
+                $rr=mysqli_fetch_array($res);
+            }
+            if ($rr['bus_id'])
+            {
+                echo "Your bus is";
+                $rr['bus_id'];
 
+            }
+            else{
+                echo "Register for bus";
+            }
+            
+            ?>
+            
+            </div>
 
 
     </body>

@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(!isset($_SESSION['user']))
-    header('Location:admin.php')
+    header('Location:admin.php');
 include_once('dbConfig.php');
 ?>
 
@@ -52,26 +52,42 @@ include_once('dbConfig.php');
 </form>
 
 <div class='container'>
-            <?php 
+    <div class="row justify-content-center">
+    <div><?php 
             if (!empty($_POST))
             { 
                 $searchfor=$_POST['for'];
                 $id=$_POST['id'];
-                if ($searchfor='driver')
+                if ($searchfor=='driver')
                     {
                         $sql="SELECT * FROM driver WHERE driver_id=".$id." ";
                         $res=mysqli_query($db,$sql);
                         if ($res)
                         {
                             $rr=mysqli_fetch_array($res);
-                            echo $rr['driver_id'];
-                            echo "<br>";
+                            echo "<b>Name: </b>";
                             echo $rr['name'];
                             echo "<br>";
-                            echo $rr['licno'];
-                            echo "<br>";
+                            echo "<b>Age: </b>";
                             echo $rr['age'];
                             echo "<br>";
+                            echo "<b>License Number: </b>";
+                            echo $rr['licno'];
+                            echo "<br>";
+                            $sql="SELECT bus_id FROM bus WHERE driver_id=".$id." ";
+                            $res=mysqli_query($db,$sql);
+                            echo "<b>Bus: </b>";
+                            $rr=mysqli_fetch_array($res);
+                            if ($rr['bus_id'])
+                            {
+                                
+                                echo $rr['bus_id'];
+                            }
+                            else
+                            {
+                                echo "UNALLOTED";
+                            }
+                            
                         }
                         else
                             echo "Does not exist";
@@ -80,9 +96,20 @@ include_once('dbConfig.php');
                     {
                         $sql="SELECT * FROM passenger WHERE passenger_id=".$id." ";
                         $res=mysqli_query($db,$sql);
+                       
                         if ($res)
                         {
+                            echo "<table border=0>";
                             $rr=mysqli_fetch_array($res);
+                            echo "<tr><td><b>Name: </b></td><td>";
+                            echo $rr['name'];
+                            echo "</td></tr><tr><td><b>Department: </b</td><td>";
+                            echo $rr['dept'];
+                            echo "</td></tr><tr><td><b>Drop-Point: </b</td><td>";
+                            echo $rr['stop'];
+                            echo "</td></tr><tr><td><b>Bus: </b</td><td>";
+                            echo $rr['bus_id'];
+                            echo "</table>";
 
                         }
                         else
@@ -91,7 +118,10 @@ include_once('dbConfig.php');
                 
           
             }
-            ?>
+            ?></div>
+    
+    </div>
+            
             </div>
 </div>
 
