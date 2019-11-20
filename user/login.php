@@ -10,11 +10,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($type=='driver')
         $sql = "SELECT driver_id as id FROM driver WHERE name = '$myusername' and password = '$mypassword'";
     else
-        $sql = "SELECT passenger_id as id FROM passenger WHERE name = '$myusername' and password = '$mypassword'";
-        
-    
+        $sql = "SELECT passenger_id as id FROM passenger WHERE name = '$myusername' and password = '$mypassword' and category = '$type'";
+
+
     $result = mysqli_query($db,$sql);
-    
+
     $count = mysqli_num_rows($result);
     // If result matched $myusername and $mypassword, table row must be 1 row
     session_start();
@@ -26,7 +26,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else
     {
-       header("location: index.php");
+       header("location: index.php?failedlogin");
+
     }
 }
 
