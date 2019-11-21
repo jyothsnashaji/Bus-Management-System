@@ -15,10 +15,23 @@ if(isset( $_GET['failedlogin'] ))
             <span onclick="this.parentElement.style.display='."'none'".'"
             class="w3-button w3-red w3-large w3-display-topright">&times;</span>
             <h3 style="color:white">Login Failed</h3>
-            <p>Please try again. If error persists, contact admin.</p>
+            <p>Please try again entering valid values. If error persists, contact admin.</p>
             </div>
         </div>';
       }
+
+      if(isset( $_GET['failedsignup'] ))
+            {
+              echo '
+              <div class="w3-container">
+                <div class="w3-panel w3-card w3-red w3-display-container">
+                  <span onclick="this.parentElement.style.display='."'none'".'"
+                  class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+                  <h3 style="color:white">Signup Failed</h3>
+                  <p>Please try again entering valid values. If error persists, contact admin.</p>
+                  </div>
+              </div>';
+            }
 
  ?>
 
@@ -31,7 +44,7 @@ if(isset( $_GET['failedlogin'] ))
         <script src="js/bootstrap.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" href="css/w3.css"> 
+        <link rel="stylesheet" href="css/w3.css">
     </head>
     <body>
 
