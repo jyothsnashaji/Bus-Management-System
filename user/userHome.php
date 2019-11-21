@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if(!isset($_SESSION['user']))
     header('Location:index.php');
@@ -12,6 +12,7 @@ include_once('dbConfig.php');
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/w3.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
     </head>
@@ -35,7 +36,7 @@ include_once('dbConfig.php');
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">HOME</a>
+                        <a class="nav-link" href="userHome.php">HOME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">SCHEDULE</a>
@@ -53,9 +54,81 @@ include_once('dbConfig.php');
             $rr='';
             if ($_SESSION['category']=='driver')
             {
+                // show driver details
+                $sql="SELECT driver_id, name, licno FROM driver WHERE driver_id=".$_SESSION['user']." ";
+                $res=mysqli_query($db,$sql);
+                //$rr=mysqli_fetch_array($res);
+
+                if ($res->num_rows > 0) {
+                  echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th colspan='3'>Your info</th></tr><tr><th>Driver ID</th><th>Name</th><th>License Number</th>";
+                  while($row = $res->fetch_assoc()) {
+                      echo "<tr><td>". $row["driver_id"]."</td><td>". $row["name"]."</td><td>". $row["licno"]."</td></tr>";
+                  }
+
+                  echo "</table></div>";
+
+                  }
+
+
+
+                // show bus details
                 $sql="SELECT bus_id FROM bus WHERE driver_id=".$_SESSION['user']." ";
                 $res=mysqli_query($db,$sql);
                 $rr=mysqli_fetch_array($res);
+                $temp = $rr['bus_id'];
+
+                echo "<br>";
+                echo "<br>";
+
+                echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th>Bus ID</th>";
+                echo "<tr><td>". $temp."</td></tr>";
+                echo "</table></div>";
+
+                echo "<br>";
+                echo "<br>";
+
+                // passengers
+                $sql="SELECT passenger_id, name, dept, category, stop FROM passenger WHERE bus_id=".$temp." ";
+                $res=mysqli_query($db,$sql);
+//                $rr=mysqli_fetch_array($res);
+
+
+                if ($res->num_rows > 0) {
+                  echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th colspan='5'>List of Passengers</th></tr><tr><th>Passenger ID</th><th>Name</th><th>Dept</th><th>Student/Staff</th><th>Stop</th>";
+                  while($row = $res->fetch_assoc()) {
+                      echo "<tr><td>". $row["passenger_id"]."</td><td>". $row["name"]."</td><td>". $row["dept"]."</td><td>". $row["category"]."</td><td>". $row["stop"]."</td></tr>";
+                  }
+
+                  echo "</table></div>";
+
+                  }
+
+                  echo "<br>";
+                  echo "<br>";
+
+
+                // stops
+                $sql="SELECT * FROM stops WHERE bus_id=".$temp." ";
+                $res=mysqli_query($db,$sql);
+                //$rr=mysqli_fetch_array($res);
+
+                if ($res->num_rows > 0) {
+                  echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th colspan='3'>List of Stops</th></tr><tr><th>Stop</th><th>Time (To College)</th><th>Time (From College)</th></tr>";
+                  while($row = $res->fetch_assoc()) {
+                      echo "<tr><td>".$row["stop"]."</td><td>". $row["to_time"]."</td><td>". $row["from_time"]."</td></tr>";
+                  }
+
+                  echo "</table></div>";
+
+                  }
+
+
+
+                echo "<br>";
+
+
+
+
 
             }
             else
@@ -64,18 +137,21 @@ include_once('dbConfig.php');
                 $res=mysqli_query($db,$sql);
                 $rr=mysqli_fetch_array($res);
             }
-            if ($rr['bus_id'])
-            {
-                echo "Your bus is";
-                $rr['bus_id'];
 
-            }
-            else{
-                echo "Register for bus";
-            }
-            
+            // if ($rr['bus_id'])
+            // {
+            //     echo "Your bus is";
+            //     $rr['bus_id'];
+            //
+            //     print_r($_SESSION);
+            //
+            // }
+            // else{
+            //     echo "Register for bus";
+            // }
+
             ?>
-            
+
             </div>
 
 

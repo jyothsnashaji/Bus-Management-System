@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if(!isset($_SESSION['user']))
     header('Location:admin.php');
@@ -15,7 +15,7 @@ include_once('dbConfig.php');
         <script src="/js/bootstrap.min.js"></script>
     </head>
     <body>
-    
+
 
 
 <div class="sidenav">
@@ -31,7 +31,7 @@ include_once('dbConfig.php');
 
 <form action='adminHome.php' method='post'>
 <div class='row justify-content-center'>
-  
+
     <div class='col-sm-3'>
         <label for='for'><b>Search For</b></label>
         <select name='for'>
@@ -42,7 +42,7 @@ include_once('dbConfig.php');
     </div>
     <div class='col-sm-3'>
         <label name='id'><b>ID</b></label>
-        <input type='text' name='id'>
+        <input type='text' name='id' placeholder="0" value="0">
     </div>
     <div class='col-sm-3' style='padding-top:40px;'>
         <input type=submit value='Search'>
@@ -53,18 +53,18 @@ include_once('dbConfig.php');
 
 <div class='container'>
     <div class="row justify-content-center">
-    <div><?php 
+    <div><?php
             if (!empty($_POST))
-            { 
+            {
                 $searchfor=$_POST['for'];
                 $id=$_POST['id'];
                 if ($searchfor=='driver')
                     {
                         $sql="SELECT * FROM driver WHERE driver_id=".$id." ";
                         $res=mysqli_query($db,$sql);
-                        if ($res)
+                        $rr=mysqli_fetch_array($res);
+                        if ($rr)
                         {
-                            $rr=mysqli_fetch_array($res);
                             echo "<b>Name: </b>";
                             echo $rr['name'];
                             echo "<br>";
@@ -80,27 +80,26 @@ include_once('dbConfig.php');
                             $rr=mysqli_fetch_array($res);
                             if ($rr['bus_id'])
                             {
-                                
+
                                 echo $rr['bus_id'];
                             }
                             else
                             {
                                 echo "UNALLOTED";
                             }
-                            
+
                         }
                         else
                             echo "Does not exist";
                     }
                 else
                     {
-                        $sql="SELECT * FROM passenger WHERE passenger_id=".$id." ";
+                        $sql="SELECT * FROM passenger WHERE category='".$searchfor."'AND passenger_id=".$id." ";
                         $res=mysqli_query($db,$sql);
-                       
-                        if ($res)
+                        $rr=mysqli_fetch_array($res);
+                        if ($rr)
                         {
                             echo "<table border=0>";
-                            $rr=mysqli_fetch_array($res);
                             echo "<tr><td><b>Name: </b></td><td>";
                             echo $rr['name'];
                             echo "</td></tr><tr><td><b>Department: </b</td><td>";
@@ -115,13 +114,13 @@ include_once('dbConfig.php');
                         else
                             echo "Does not exist";
                     }
-                
-          
+
+
             }
             ?></div>
-    
+
     </div>
-            
+
             </div>
 </div>
 
