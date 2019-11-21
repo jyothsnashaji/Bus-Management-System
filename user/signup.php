@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once('dbConfig.php');
 
 ?>
@@ -29,7 +29,7 @@ include_once('dbConfig.php');
                         <input type="text" name="name" id="name" placeholder="Enter Name" required />
                         <input type="email" name="email" id="email" placeholder="Enter Email" required />
                         <input type="password" name='password' placeholder="Enter Password" required>
-                        <input type="password" name='reeneterpassword' placeholder="Confirm Password "required>
+                        <input type="password" name='repassword' placeholder="Confirm Password "required>
 
                         <div class="select-list">
                             <select required name="category" id="user_type" onchange='loadinput();' required>
@@ -87,7 +87,7 @@ include_once('dbConfig.php');
 
                         </select>
 
-                        <input type="number" name="age" id="Age" placeholder="Age" /> 
+                        <input type="number" name="age" id="Age" placeholder="Age" />
 
                         <input type="number" name="lic_no" id="License_number" placeholder="License number" />
 
