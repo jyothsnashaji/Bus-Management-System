@@ -7,9 +7,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $myusername = mysqli_real_escape_string($db,$_POST['username']);
     $mypassword = mysqli_real_escape_string($db,$_POST['password']);
     $sql = "SELECT admin_id FROM admin WHERE username = '$myusername' and password = '$mypassword'";
-    
+
     $result = mysqli_query($db,$sql);
-    
+
     $count = mysqli_num_rows($result);
     // If result matched $myusername and $mypassword, table row must be 1 row
     session_start();
@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else
     {
-        header("location: admin.php");
+        header("location: admin.php?failedlogin");
     }
 }
 
