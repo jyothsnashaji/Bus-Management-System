@@ -39,7 +39,7 @@ include_once('dbConfig.php');
                         <a class="nav-link" href="userHome.php">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">SCHEDULE</a>
+                        <a class="nav-link" href="schedule.php">SCHEDULE</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">LOGOUT</a>
