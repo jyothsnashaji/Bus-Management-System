@@ -132,8 +132,6 @@ include_once('dbConfig.php');
             </div>
 </div>
 
-</div>
-
 </body>
 
 </html>

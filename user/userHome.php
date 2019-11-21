@@ -39,7 +39,7 @@ include_once('dbConfig.php');
                         <a class="nav-link" href="userHome.php">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">SCHEDULE</a>
+                        <a class="nav-link" href="schedule.php">SCHEDULE</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">LOGOUT</a>
@@ -133,9 +133,40 @@ include_once('dbConfig.php');
             }
             else
             {
-                $sql="SELECT bus_id FROM passenger WHERE passenger_id=".$_SESSION['user']." ";
+                // show passenger details
+                $sql="SELECT passenger_id, name, dept, email FROM passenger WHERE passenger_id=".$_SESSION['user']." ";
                 $res=mysqli_query($db,$sql);
-                $rr=mysqli_fetch_array($res);
+                //$rr=mysqli_fetch_array($res);
+
+                if ($res->num_rows > 0) {
+                  echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th colspan='4'>Your info</th></tr><tr><th>Passenger ID</th><th>Name</th><th>Dept</th><th>Email</th>";
+                  while($row = $res->fetch_assoc()) {
+                      echo "<tr><td>". $row["passenger_id"]."</td><td>". $row["name"]."</td><td>". $row["dept"]."</td><td>". $row["email"]."</td></tr>";
+                  }
+
+                  echo "</table></div>";
+
+                  echo "<br><br>";
+
+
+                }
+
+                // show your bus, your driver, stop, to and fro time
+                $sql="SELECT b.bus_id, d.driver_id, d.name, s.stop, s.to_time, s.from_time FROM passenger p, bus b, stops s, driver d WHERE p.passenger_id=".$_SESSION['user']." AND p.bus_id = b.bus_id AND b.driver_id = d.driver_id AND p.stop = s.stop";
+                $res=mysqli_query($db,$sql);
+                //$rr=mysqli_fetch_array($res);
+
+                if ($res->num_rows > 0) {
+                  echo "<div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th colspan='6'>Your bus info</th></tr><tr><th>Bus ID</th><th>Driver ID</th><th>Driver Name</th><th>Stop</th><th>To Time</th><th>From Time</th>";
+                  while($row = $res->fetch_assoc()) {
+                      echo "<tr><td>". $row["bus_id"]."</td><td>". $row["driver_id"]."</td><td>". $row["name"]."</td><td>". $row["stop"]."</td><td>". $row["to_time"]."</td><td>". $row["from_time"]."</td></tr>";
+                  }
+
+                  echo "</table></div>";
+
+                }
+
+
             }
 
             // if ($rr['bus_id'])
