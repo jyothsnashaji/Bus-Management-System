@@ -120,9 +120,78 @@ include_once('dbConfig.php');
             }
             else
             {
-                echo "<div id='student' style='display:none;'></div>";
-                echo "<div id='staff' style='display:none;'></div>";
-                echo "<div id='driver' style='display:none;'></div>";
+                echo "<div id='student'>";
+                $sql="SELECT * FROM passenger WHERE category='student'";
+                $res=mysqli_query($db,$sql);
+                if($res)
+                {
+                    echo "<table class='table'><tr><th>ID</th><th>Name</th><th>Department</th><th>Stop</th><th>Bus</th></tr>";
+                    while($rr=mysqli_fetch_array($res))
+                    {
+                        echo "<tr><td>";
+                        echo $rr['passenger_id'];
+                        echo "</td><td>";
+                        echo $rr['name'];
+                        echo "</td><td>";
+                        echo $rr['dept'];
+                        echo "</td><td>";
+                        echo $rr['stop'];
+                        echo "</td><td>";
+                        echo $rr['bus_id'];
+                        echo "</td></tr>";
+                    }
+                    echo "</table>";
+                }
+                echo"</div>";
+                echo "<div id='staff' style='display:none;'>";
+                $sql="SELECT * FROM passenger WHERE category='staff'";
+                $res=mysqli_query($db,$sql);
+                if($res)
+                {
+                    echo "<table class='table'><tr><th>ID</th><th>Name</th><th>Department</th><th>Stop</th><th>Bus</th></tr>";
+                    while($rr=mysqli_fetch_array($res))
+                    {
+                        echo "<tr><td>";
+                        echo $rr['passenger_id'];
+                        echo "</td><td>";
+                        echo $rr['name'];
+                        echo "</td><td>";
+                        echo $rr['dept'];
+                        echo "</td><td>";
+                        echo $rr['stop'];
+                        echo "</td><td>";
+                        echo $rr['bus_id'];
+                        echo "</td></tr>";
+                    }
+                    echo "</table>";
+                }
+                echo "</div>";
+                echo "<div id='driver' style='display:none;'>";
+                $sql="SELECT * FROM driver";
+                $res=mysqli_query($db,$sql);
+            
+                if($res)
+                {
+                    echo "<table class='table'><tr><th>ID</th><th>Name</th><th>Bus</th></tr>";
+                    while($rr=mysqli_fetch_array($res))
+                    {
+                        $sql="SELECT bus_id FROM bus WHERE driver_id=".$rr['driver_id']." ";
+                        $res_=mysqli_query($db,$sql);
+                        $bus=mysqli_fetch_array($res_);
+                        echo "<tr><td>";
+                        echo $rr['driver_id'];
+                        echo "</td><td>";
+                        echo $rr['name'];
+                        echo "</td><td>";
+                        if ($bus['bus_id'])
+                            echo $bus['bus_id'];
+                        else
+                            echo "UNALLOTED";
+                        echo "</td></tr>";
+                    }
+                    echo "</table>";
+                }
+                echo "</div>";
 
             }
             ?></div>

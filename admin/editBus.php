@@ -63,6 +63,7 @@ include_once('dbConfig.php');
     echo "<form action='insertEditBus.php?bus_id=";
     echo $_POST['bus_id'];
     echo "' method='post' ><div id='stopsInput'>";
+
    echo "
   <div class='row justify-content-center'>
           <div class='col-sm-3'> 

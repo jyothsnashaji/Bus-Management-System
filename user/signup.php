@@ -70,22 +70,7 @@ include_once('dbConfig.php');
                     </div>
 
                     <div class="form-group-2" id='driver' style='display:none;'>
-                        <select name="bus_id">
 
-                            <?php
-                            $sql="SELECT bus_id FROM bus ";
-                            $res=mysqli_query($db,$sql);
-                            while ($rr=mysqli_fetch_array($res))
-                            {
-                                echo "<option value='";
-                                echo $rr['bus_id'];
-                                echo "'>";
-                                echo $rr['bus_id'];
-                                echo "</option>";
-                            }
-                            ?>
-
-                        </select>
 
                         <input type="number" name="age" id="Age" placeholder="Age" />
 

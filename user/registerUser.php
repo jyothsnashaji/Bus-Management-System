@@ -27,19 +27,8 @@ else
 $res=mysqli_query($db,$sql);
 if ($res)
 {
-    if ($category=='driver')
-    {
-        $sql="UPDATE bus SET driver_id=".$db->insert_id." WHERE bus_id=".$bus_id." ";
-        $res=mysqli_query($db,$sql);
-        if ($res)
-        {
-             header('Location:index.php');
-        }
-    }
-    else
-    {
+    
          header('Location:index.php');
-    }
 }
 
 echo $db->error;
