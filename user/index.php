@@ -40,7 +40,7 @@ if(isset( $_GET['failedlogin'] ))
                 <div class="modal-content">
 
                     <div class="col-12 user-img">
-                        <img src="images/avatar.png">
+                        <img style="border-radius:50%;" src="images/avatar.png">
                     </div>
 
                     <form class="col-12" method="post" action="login.php">

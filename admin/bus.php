@@ -81,11 +81,29 @@ while($buses=mysqli_fetch_array($res))
   echo $row['source'];
   echo" </td><td>Destination: ";
   echo $row_['dest'];
-  echo "</td><td>Driver: ";
+  echo "</td><td> ";
   if ($row__=mysqli_fetch_array($res_))
+  {
+    echo "Driver: ";
     echo $row__['name'];
+  }
+
   else 
-    echo "UNALLOTED";
+    {echo "<form method=post action='allotDriver.php?bus_id=";
+      echo $buses['bus_id'];;
+      echo "'><select name='driver_id' style='width:40%;'><option selected disabled> Driver</option>";
+    $sql="SELECT driver_id FROM driver WHERE driver_id NOT IN (SELECT DISTINCT driver_id FROM bus) ";
+    $re=mysqli_query($db,$sql);
+    while($driver=mysqli_fetch_array($re))
+    {
+      echo "<option value=";
+      echo $driver['driver_id'];
+     echo " >";
+      echo $driver['driver_id'];
+      echo "</option>";
+    }
+    echo "</select>  <input style='width:25%;' type=submit value='Allot' ></form>";
+  }
  echo "</td></tr>";
  
   $sql="SELECT * FROM stops WHERE bus_id=".$buses['bus_id']." ORDER BY to_time ASC ";

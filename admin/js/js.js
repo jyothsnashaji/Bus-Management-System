@@ -25,7 +25,19 @@ function addStop()
     ele.innerHTML+=html;
 }
 
+function displaydb()
+{
+    var ele=document.getElementById('for');
 
+    var val=ele.options[ele.selectedIndex].value;
+  
+    document.getElementById('student').style.display='none';
+    document.getElementById('driver').style.display='none';
+    document.getElementById('staff').style.display='none';
+
+    document.getElementById(val).style.display='block';
+
+}
 
 function toggle_collapse(op)
           {

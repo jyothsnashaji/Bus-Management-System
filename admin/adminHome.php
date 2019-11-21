@@ -13,6 +13,7 @@ include_once('dbConfig.php');
         <link rel="stylesheet" href="css/bootstrap.min.css" >
         <link rel="stylesheet" href="css/styles.css" >
         <script src="/js/bootstrap.min.js"></script>
+        <script src="js/js.js"></script>
     </head>
     <body>
 
@@ -34,7 +35,7 @@ include_once('dbConfig.php');
 
     <div class='col-sm-3'>
         <label for='for'><b>Search For</b></label>
-        <select name='for'>
+        <select id='for' name='for' onchange='displaydb();'>
             <option  value='student'>Student</option>
             <option value='staff'>Staff</option>
             <option value='driver'>Driver</option>
@@ -115,6 +116,13 @@ include_once('dbConfig.php');
                             echo "Does not exist";
                     }
 
+
+            }
+            else
+            {
+                echo "<div id='student' style='display:none;'></div>";
+                echo "<div id='staff' style='display:none;'></div>";
+                echo "<div id='driver' style='display:none;'></div>";
 
             }
             ?></div>

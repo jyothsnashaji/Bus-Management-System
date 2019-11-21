@@ -19,7 +19,16 @@ input[type=text], input[type=password],input[type=number],input[type=time],selec
   background-coloR: white;
 }
 
+.btn{
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  text-align: center;
 
+}
 
 /* Set a style for all buttons */
 button, input[type=submit], .button {
@@ -29,6 +38,7 @@ button, input[type=submit], .button {
   border: none;
   cursor: pointer;
   width: 100%;
+
 }
 
 button:hover {
