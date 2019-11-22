@@ -8,7 +8,7 @@ if ($repassword<>$password){header('location: index.php?failedsignup');}
 $category=$_POST['category'];
 if ($category=='driver')
 {
-    $bus_id=$_POST['bus_id'];
+    
     $age=$_POST['age'];
     $licno=$_POST['lic_no'];
     $sql="INSERT INTO driver(name,email,password,age,licno) VALUES('".$name."','".$email."','".$password."',".$age.",".$licno.")";
