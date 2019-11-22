@@ -67,18 +67,19 @@ else
    echo $_POST['bus_id'];
    echo "' method='post' >
         <div class='container'>
+        <div class='row justify-content-center'>
+        <div class='col-sm-3'> 
+            <label for='stop'><b>Stop </b></label>
+        </div>
+        <div class='col-sm-3'> 
+            <label for='time'><b>Morning (To College)</b></label>
+        </div>
+        <div class='col-sm-3'> 
+            <label for='time'><b>Evening (From College)</b></label>
+        </div>
+    </div>
             <div id='stopsInput'>
-                <div class='row justify-content-center'>
-                    <div class='col-sm-3'> 
-                        <label for='stop'><b>Stop </b></label>
-                    </div>
-                    <div class='col-sm-3'> 
-                        <label for='time'><b>Morning (To College)</b></label>
-                    </div>
-                    <div class='col-sm-3'> 
-                        <label for='time'><b>Evening (From College)</b></label>
-                    </div>
-                </div>
+
                 <div class='row justify-content-center'>
                     <div class='col-sm-3'> 
                         <input type='text' name='stop[]' required>
@@ -91,17 +92,7 @@ else
                     </div>
                 </div>
     
-                <div class='row justify-content-center'>
-                    <div class='col-sm-3'> 
-                        <label for='stop'><b>Stop </b></label>
-                    </div>
-                    <div class='col-sm-3'> 
-                        <label for='time'><b>Morning (To College)</b></label>
-                    </div>
-                    <div class='col-sm-3'> 
-                        <label for='time'><b>Evening (From College)</b></label>
-                    </div>
-                </div>
+              
                 <div class='row justify-content-center'>
                     <div class='col-sm-3'> 
                         <input type='text' name='stop[]' required>
@@ -114,17 +105,7 @@ else
                     </div>
                 </div>
     
-                <div class='row justify-content-center'>
-                    <div class='col-sm-3'> 
-                        <label for='stop'><b>Stop </b></label>
-                    </div>
-                    <div class='col-sm-3'> 
-                        <label for='time'><b>Morning (To College)</b></label>
-                    </div>
-                    <div class='col-sm-3'> 
-                        <label for='time'><b>Evening (From College)</b></label>
-                    </div>
-                </div>
+                
                 <div class='row justify-content-center'>
                     <div class='col-sm-3'> 
                         <input type='text' name='stop[]' required>
