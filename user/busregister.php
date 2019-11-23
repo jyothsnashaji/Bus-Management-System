@@ -61,7 +61,7 @@ include_once('dbConfig.php');
                   <select name="busid2reg" >
                       <option selected value="">Choose Bus ID</option>
                       <?php
-                      $sql="SELECT bus_id FROM bus ";
+                      $sql="SELECT s.bus_id FROM stops s, passenger p where p.passenger_id = '".$_SESSION['user']."' AND p.stop=s.stop";
                       $res=mysqli_query($db,$sql);
                       while ($rr=mysqli_fetch_array($res))
                       {

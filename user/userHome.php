@@ -163,7 +163,7 @@ include_once('dbConfig.php');
             else
             {
                 // show passenger details
-                $sql="SELECT passenger_id, name, dept, email FROM passenger WHERE passenger_id=".$_SESSION['user']." ";
+                $sql="SELECT passenger_id, name, dept, email FROM passenger WHERE passenger_id='".$_SESSION['user']."' ";
                 $res=mysqli_query($db,$sql);
                 //$rr=mysqli_fetch_array($res);
 
@@ -181,7 +181,7 @@ include_once('dbConfig.php');
                 }
 
                 // show your bus, your driver, stop, to and fro time
-                $sql="SELECT b.bus_id, d.driver_id, d.name, s.stop, s.to_time, s.from_time FROM passenger p, bus b, stops s, driver d WHERE p.passenger_id=".$_SESSION['user']." AND p.bus_id = b.bus_id AND b.driver_id = d.driver_id AND p.stop = s.stop";
+                $sql="SELECT b.bus_id, d.driver_id, d.name, s.stop, s.to_time, s.from_time FROM passenger p, bus b, stops s, driver d WHERE p.passenger_id='".$_SESSION['user']."' AND p.bus_id = b.bus_id AND b.driver_id = d.driver_id AND p.stop = s.stop";
                 $res=mysqli_query($db,$sql);
                 //$rr=mysqli_fetch_array($res);
 

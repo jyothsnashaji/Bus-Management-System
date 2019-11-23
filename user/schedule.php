@@ -35,10 +35,10 @@ include_once('dbConfig.php');
 
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="userHome.php">HOME</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="schedule.php">SCHEDULE</a>
                     </li>
                     <li class="nav-item">
@@ -60,6 +60,7 @@ include_once('dbConfig.php');
                 <div class='col-sm-3'>
                     <label for='for'><b>Schedule by</b></label>
                     <select name='for'>
+                        <option value='srcdest'>Source-Destination</option>
                         <option value='stop'>Stop</option>
                         <option value='busid'>Bus ID</option>
                     </select>
@@ -116,19 +117,52 @@ include_once('dbConfig.php');
                                     else
                                         echo "<br><br>Does not exist";
                                 }
+                            else if ($searchfor=='srcdest')
+                            {
+                              $str=explode("-", $id); // src, dest
+                              $src = $str[0];
+                              $dest = $str[1];
+                              $sql="SELECT * FROM stops ORDER BY bus_id, to_time";
+                              $res=mysqli_query($db,$sql);
+                              $routes = array();
+                              $temparr = array();
+                              $tempbus = 0;
+                              if ($res->num_rows > 0) {
+                                while($row = $res->fetch_assoc()) {
+                                  if ($tempbus==0) {$tempbus = $row["bus_id"];}
+                                  else if ($row["bus_id"]<>$tempbus) {$tempbus = $row["bus_id"]; $temparr = array();}
+                                  if ($row["stop"]==$src){
+                                      while (true){
+                                        $x = array_push($temparr, $row);
+                                        $row = $res->fetch_assoc();
+                                        if (!($row)){$temparr = array(); break;}
+                                        else if ($row["stop"]==$dest){$x = array_push($temparr, $row); $routes = array_merge($routes, $temparr); $temparr = array(); break;}
+                                        else if ($row["bus_id"]<>$tempbus) {$tempbus = $row["bus_id"]; $temparr = array(); break;}
 
+                                  }
+                                }
 
-                        }
-                        ?></div>
+                          }
+
+                            }
+                              //print_r($routes);
+                              if ($routes){
+                                echo "<br><div class='w3-container'> <table class='w3-table-all w3-centered  w3-hoverable w3-reponsive w3-card-4'><tr><th colspan='4'>Stop info for your route ".$id."</th></tr><tr><th>Bus ID</th><th>Stop</th><th>To Time</th><th>From Time</th>";
+                                $i = 0;
+                                while($i<count($routes)) {
+                                    $row = $routes[$i];
+                                     echo "<tr><td>". $row["bus_id"]."</td><td>". $row["stop"]."</td><td>". $row["to_time"]."</td><td>". $row["from_time"]."</td></tr>";
+                                     $i = $i + 1;
+                                 }
+
+                                 echo "</table></div>";
+                              }
+                              else {
+                                echo "Does not exist";
+                              }
+                            }
+                        }?></div>
 
                 </div>
 
                         </div>
-            </div>
-
-
-            </div>
-
-
-    </body>
-</html>
