@@ -3,6 +3,7 @@ session_start();
 if(!isset($_SESSION['user']))
     header('Location:index.php');
 include_once('dbConfig.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +52,34 @@ include_once('dbConfig.php');
             </header>
             <div class='container'>
             <?php
+
+            if(isset( $_GET['busAssigned'] ))
+                  {
+                    echo '
+                    <div class="w3-container">
+                      <div class="w3-panel w3-card w3-green w3-display-container">
+                        <span onclick="this.parentElement.style.display='."'none'".'"
+                        class="w3-button w3-green w3-large w3-display-topright">&times;</span>
+                        <h3 style="color:white">Bus Assigned!</h3>
+                        <p>Your details have been updated.</p>
+                        </div>
+                    </div>';
+                  }
+
+                  if(isset( $_GET['busNotAssigned'] ))
+                        {
+                          echo '
+                          <div class="w3-container">
+                            <div class="w3-panel w3-card w3-red w3-display-container">
+                              <span onclick="this.parentElement.style.display='."'none'".'"
+                              class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+                              <h3 style="color:white">Bus assignment failed</h3>
+                              <p>Please try again. If errors persist, contact admin.</p>
+                              </div>
+                          </div>';
+                        }
+
+
             $rr='';
             if ($_SESSION['category']=='driver')
             {
@@ -134,7 +163,7 @@ include_once('dbConfig.php');
             else
             {
                 // show passenger details
-                $sql="SELECT passenger_id, name, dept, email FROM passenger WHERE passenger_id=".$_SESSION['user']." ";
+                $sql="SELECT passenger_id, name, dept, email FROM passenger WHERE passenger_id='".$_SESSION['user']."' ";
                 $res=mysqli_query($db,$sql);
                 //$rr=mysqli_fetch_array($res);
 
@@ -152,7 +181,7 @@ include_once('dbConfig.php');
                 }
 
                 // show your bus, your driver, stop, to and fro time
-                $sql="SELECT b.bus_id, d.driver_id, d.name, s.stop, s.to_time, s.from_time FROM passenger p, bus b, stops s, driver d WHERE p.passenger_id=".$_SESSION['user']." AND p.bus_id = b.bus_id AND b.driver_id = d.driver_id AND p.stop = s.stop";
+                $sql="SELECT b.bus_id, d.driver_id, d.name, s.stop, s.to_time, s.from_time FROM passenger p, bus b, stops s, driver d WHERE p.passenger_id='".$_SESSION['user']."' AND p.bus_id = b.bus_id AND b.driver_id = d.driver_id AND p.stop = s.stop";
                 $res=mysqli_query($db,$sql);
                 //$rr=mysqli_fetch_array($res);
 
@@ -163,6 +192,12 @@ include_once('dbConfig.php');
                   }
 
                   echo "</table></div>";
+
+                }
+
+                else {
+                  echo "<center>You do not have a bus yet. Register for one below. If there are issues, contact the admin. <br><br></center>";
+                  echo '<center><form action="busregister.php"><input type="submit" value="Register for a bus" /></form></center>';
 
                 }
 
